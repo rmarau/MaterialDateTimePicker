@@ -415,7 +415,7 @@ public class DatePickerDialog extends DialogFragment implements
             case MONTH_AND_DAY_VIEW:
                 ObjectAnimator pulseAnimator = Utils.getPulseAnimator(mMonthAndDayView, 0.9f,
                         1.05f);
-                if (mDelayAnimation) {
+                if (mDelayAnimation && pulseAnimator!=null) {
                     pulseAnimator.setStartDelay(ANIMATION_DELAY);
                     mDelayAnimation = false;
                 }
@@ -426,7 +426,7 @@ public class DatePickerDialog extends DialogFragment implements
                     mAnimator.setDisplayedChild(MONTH_AND_DAY_VIEW);
                     mCurrentView = viewIndex;
                 }
-                pulseAnimator.start();
+                if (pulseAnimator!=null) pulseAnimator.start();
 
                 int flags = DateUtils.FORMAT_SHOW_DATE;
                 String dayString = DateUtils.formatDateTime(getActivity(), millis, flags);
@@ -435,7 +435,7 @@ public class DatePickerDialog extends DialogFragment implements
                 break;
             case YEAR_VIEW:
                 pulseAnimator = Utils.getPulseAnimator(mYearView, 0.85f, 1.1f);
-                if (mDelayAnimation) {
+                if (mDelayAnimation && pulseAnimator!=null) {
                     pulseAnimator.setStartDelay(ANIMATION_DELAY);
                     mDelayAnimation = false;
                 }
@@ -446,7 +446,7 @@ public class DatePickerDialog extends DialogFragment implements
                     mAnimator.setDisplayedChild(YEAR_VIEW);
                     mCurrentView = viewIndex;
                 }
-                pulseAnimator.start();
+                if (pulseAnimator!=null) pulseAnimator.start();
 
                 CharSequence yearString = YEAR_FORMAT.format(millis);
                 mAnimator.setContentDescription(mYearPickerDescription+": "+yearString);

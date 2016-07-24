@@ -157,7 +157,8 @@ public abstract class DayPickerView extends ListView implements OnScrollListener
         setOnScrollListener(this);
         setFadingEdgeLength(0);
         // Make the scrolling behavior nicer
-        setFriction(ViewConfiguration.getScrollFriction() * mFriction);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+            setFriction(ViewConfiguration.getScrollFriction() * mFriction);
     }
 
     /**
