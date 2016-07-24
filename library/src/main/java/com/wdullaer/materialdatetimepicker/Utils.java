@@ -35,6 +35,8 @@ import android.view.View;
  */
 public class Utils {
 
+    public static final boolean USE_ANIMATION = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB);
+
     //public static final int MONDAY_BEFORE_JULIAN_EPOCH = Time.EPOCH_JULIAN_DAY - 3;
     public static final int PULSE_ANIMATOR_DURATION = 544;
 
@@ -107,6 +109,8 @@ public class Utils {
      */
     public static ObjectAnimator getPulseAnimator(View labelToAnimate, float decreaseRatio,
             float increaseRatio) {
+        if (!USE_ANIMATION) return null;
+
         Keyframe k0 = Keyframe.ofFloat(0f, 1f);
         Keyframe k1 = Keyframe.ofFloat(0.275f, decreaseRatio);
         Keyframe k2 = Keyframe.ofFloat(0.69f, increaseRatio);

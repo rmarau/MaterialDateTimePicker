@@ -436,7 +436,7 @@ public class DatePickerDialog extends DialogFragment implements
                 if (mVersion == Version.VERSION_1) {
                     ObjectAnimator pulseAnimator = Utils.getPulseAnimator(mMonthAndDayView, 0.9f,
                             1.05f);
-                    if (mDelayAnimation) {
+                    if (mDelayAnimation && pulseAnimator!=null) {
                         pulseAnimator.setStartDelay(ANIMATION_DELAY);
                         mDelayAnimation = false;
                     }
@@ -447,7 +447,7 @@ public class DatePickerDialog extends DialogFragment implements
                         mAnimator.setDisplayedChild(MONTH_AND_DAY_VIEW);
                         mCurrentView = viewIndex;
                     }
-                    pulseAnimator.start();
+                    if (pulseAnimator!=null) pulseAnimator.start();
                 } else {
                     mDayPickerView.onDateChanged();
                     if (mCurrentView != viewIndex) {
@@ -466,7 +466,7 @@ public class DatePickerDialog extends DialogFragment implements
             case YEAR_VIEW:
                 if (mVersion == Version.VERSION_1) {
                     ObjectAnimator pulseAnimator = Utils.getPulseAnimator(mYearView, 0.85f, 1.1f);
-                    if (mDelayAnimation) {
+                    if (mDelayAnimation && pulseAnimator!=null) {
                         pulseAnimator.setStartDelay(ANIMATION_DELAY);
                         mDelayAnimation = false;
                     }
@@ -477,7 +477,7 @@ public class DatePickerDialog extends DialogFragment implements
                         mAnimator.setDisplayedChild(YEAR_VIEW);
                         mCurrentView = viewIndex;
                     }
-                    pulseAnimator.start();
+                    if (pulseAnimator!=null) pulseAnimator.start();
                 } else {
                     mYearPickerView.onDateChanged();
                     if (mCurrentView != viewIndex) {
