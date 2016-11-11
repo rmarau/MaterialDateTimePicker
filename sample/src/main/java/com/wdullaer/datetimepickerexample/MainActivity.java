@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements
                     }
                     dpd.setDisabledDays(dates);
                 }
-                dpd.show(getFragmentManager(), "Datepickerdialog");
+                dpd.show(getSupportFragmentManager(), "Datepickerdialog");
             }
         });
     }
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements
     public void onResume() {
         super.onResume();
         TimePickerDialog tpd = (TimePickerDialog) getFragmentManager().findFragmentByTag("Timepickerdialog");
-        DatePickerDialog dpd = (DatePickerDialog) getFragmentManager().findFragmentByTag("Datepickerdialog");
+        DatePickerDialog dpd = (DatePickerDialog) getSupportFragmentManager().findFragmentByTag("Datepickerdialog");
 
         if(tpd != null) tpd.setOnTimeSetListener(this);
         if(dpd != null) dpd.setOnDateSetListener(this);
